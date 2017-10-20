@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
        // mainActivity =this;
         button = (Button)findViewById(R.id.button);
         textView=(TextView)findViewById(R.id.textView);
-        initOkHttp();
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -49,24 +48,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    OkHttpClient.Builder httpBuilder;
-    private void initOkHttp() {
-        httpBuilder = new OkHttpClient.Builder();
-        if (BuildConfig.DEBUG) {
-            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-            httpBuilder.addInterceptor(httpLoggingInterceptor);
-        }
-       // httpBuilder.addInterceptor(new ResponseInterceptor());
-        httpBuilder.connectTimeout(15, TimeUnit.SECONDS);
-    }
+
     public void request()
     {
+
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(httpLoggingInterceptor)
+                .build();
         String baseUrl = "https://api.douban.com/v2/movie/";
         Retrofit retrofit=new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(okHttpClient)
                 .build();
 
         ApiService apiService = retrofit.create(ApiService.class);
