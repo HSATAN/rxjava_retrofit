@@ -4,6 +4,8 @@ import java.util.List;
 
 /**
  * Created by huangkaijie on 2017/10/20.
+ * 数据适配器，必须与返回的json一致，不然会出错,
+ *
  */
 
 public class Movie {

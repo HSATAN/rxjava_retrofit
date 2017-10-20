@@ -25,14 +25,18 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.example.huangkaijie.myapplication.R.layout.main;
+
 public class MainActivity extends AppCompatActivity {
 
     public Button button;
     public TextView textView;
+    //public static MainActivity mainActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(main);
+       // mainActivity =this;
         button = (Button)findViewById(R.id.button);
         textView=(TextView)findViewById(R.id.textView);
         initOkHttp();
@@ -43,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 request();
             }
         });
+
     }
     OkHttpClient.Builder httpBuilder;
     private void initOkHttp() {
@@ -67,33 +72,47 @@ public class MainActivity extends AppCompatActivity {
         ApiService apiService = retrofit.create(ApiService.class);
         apiService.getTopMovie(0,10).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Movie>() {
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {
-                        Log.d("FragmentActivity", "onSubscrive");
-                    }
-
-                    @Override
-                    public void onNext(@NonNull Movie movie) {
-                        Log.d("movie ", movie.getTitle());
-                        List<Movie.SubjectsBean> list = movie.getSubjects();
-                        for(Movie.SubjectsBean sub:list)
-                        {
-                            Log.d("subbean",sub.getTitle());
-                        }
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        Log.e("error :", "onError: " + e.getMessage());
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        Log.d("down :", "onComplete: Over!");
-                    }
-                });
+                .subscribe(new DouBanObserver(this));
 
 
     }
+}
+class DouBanObserver implements Observer<Movie> {
+
+    private MainActivity activity;
+
+    public DouBanObserver(MainActivity mainActivity){
+        this.activity = mainActivity;
+
+    }
+    public void onSubscribe(@NonNull Disposable d) {
+        Log.d("FragmentActivity", "onSubscrive");
+    }
+
+
+    public void onNext(@NonNull Movie movie) {
+        Log.d("movie ", movie.getTitle());
+        List<Movie.SubjectsBean> list = movie.getSubjects();
+        String name="";
+        for(Movie.SubjectsBean sub:list)
+        {
+            Log.d("subbean",sub.getTitle());
+            name += sub.getTitle()+"\n";
+
+        }
+
+        activity.textView.setText(name);
+
+    }
+
+
+    public void onError(@NonNull Throwable e) {
+        Log.e("error :", "onError: " + e.getMessage());
+    }
+
+
+    public void onComplete() {
+        Log.d("down :", "onComplete: Over!");
+    }
+
 }
