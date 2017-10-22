@@ -185,6 +185,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     public void initUser()
     {
+        //读取缓存的用户信息，
         SharedPreferences sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
         String name = sharedPreferences.getString("name","");
@@ -197,6 +198,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     public void saveUser(User user)
     {
+        //保存用户信息
         SharedPreferences sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
         editor.putString("name", user.name);

@@ -10,4 +10,8 @@ public class User {
     public static int id;
     public static String image;
 
+
+    public Boolean Auth(){
+        return false;
+    }
 }
