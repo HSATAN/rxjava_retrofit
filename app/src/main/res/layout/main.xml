@@ -12,9 +12,36 @@
         android:text="TextView" />
 
     <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.27"
+        android:text="跳转到新activity" />
+
+    <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.28"
-        android:text="Button" />
+        android:text="加载豆瓣电影排名" />
+
+    <Button
+        android:id="@+id/userinfo_post_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="post方式加载用户信息" />
+
+    <Button
+        android:id="@+id/userinfo_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.24"
+        android:text="加载用户信息" />
+
+    <Button
+        android:id="@+id/current_user_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.15"
+        android:text="当前用户信息" />
 </LinearLayout>
