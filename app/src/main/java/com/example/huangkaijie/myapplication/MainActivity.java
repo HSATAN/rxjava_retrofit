@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -37,10 +39,11 @@ public class MainActivity extends Activity {
     Button userinfoPostButton;
     @BindView(R.id.current_user_button)
     Button currentUserButton;
-
+    long exitTime = System.currentTimeMillis();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         ButterKnife.bind(this);
@@ -84,7 +87,28 @@ public class MainActivity extends Activity {
         });
 
     }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        //连按两次返回键退出app
+        if(keyCode == KeyEvent.KEYCODE_BACK&& event.getAction() == KeyEvent.ACTION_DOWN)
+        {
+            if(System.currentTimeMillis()-exitTime>1000)//两次按键的时间
+            {
+                //Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                moveTaskToBack(false);
+                exitTime = System.currentTimeMillis();
+            }
+            else{
+                finish();
 
+                System.exit(0);
+            }
+            return false;
+
+        }
+        return super.onKeyDown(keyCode, event);
+    }
     public void post() {
         Retrofit retrofit = RetrofitFactory.getRetrofit();
         ApiService apiService = retrofit.create(ApiService.class);

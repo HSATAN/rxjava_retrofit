@@ -11,4 +11,5 @@ public class User {
     public String age;
     public int code;
     public String message;
+    public int number;
 }

@@ -12,12 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import DataAdapter.User;
 import api.ApiService;
@@ -95,21 +97,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
         //savedInstanceState.putString("name",editText2.getText().toString());
         //savedInstanceState.putString("password",editText3.getText().toString());
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 post();
-                //activity传递参数的两种方法，一是放在buddle中，二是直接放在intent中
-                Log.d("auth-------------", auth.toString());
-                if (AuthUser.User.id == 1) {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra("name", username.getText().toString());
-                    intent.putExtra("password", password.getText().toString());
-                    startActivity(intent);
-                    finish();
-                }
+
             }
         });
         username.addTextChangedListener(new TextWatcher() {
@@ -158,10 +153,10 @@ public class LoginActivity extends AppCompatActivity {
                     public void onNext(@NonNull User user) {
                             if (user.code == 11111) {
                                 auth = true;
-                                Log.d("auth-------------", auth.toString());
                                 Log.d("id: ", Integer.toString(user.id));
                                 AuthUser.User.id = user.id;
                                 AuthUser.User.name = user.name;
+                                AuthUser.User.number = user.number;
                                 Log.d("name :", user.name);
                                 Log.d("age: ", user.age);
                                 Log.d("password: ", user.password);
@@ -179,9 +174,26 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onComplete() {
-
+                    Login();
                     }
                 });
+    }
+
+
+    public void Login()
+    {
+        Log.d("auth-------------", Integer.toString(AuthUser.User.number));
+        if(AuthUser.User.number==999)
+        {
+            //activity传递参数的两种方法，一是放在buddle中，二是直接放在intent中
+
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.putExtra("name", username.getText().toString());
+                intent.putExtra("password", password.getText().toString());
+                startActivity(intent);
+                finish();
+
+        }
     }
     public void initUser()
     {
