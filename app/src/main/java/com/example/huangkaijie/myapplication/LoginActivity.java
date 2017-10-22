@@ -214,6 +214,7 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
         editor.putString("name", user.name);
+        editor.putString("password",user.password);
         editor.commit();
     }
 }
