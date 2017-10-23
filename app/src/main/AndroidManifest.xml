@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecyleActivity"></activity>
+        <activity android:name=".RecylerActivity"></activity>
         <activity android:name=".MainActivity"></activity>
+        <activity android:name="MyActivity.PersonalActivity"></activity>
     </application>
     <uses-permission  android:name="android.permission.INTERNET"/>
 </manifest>

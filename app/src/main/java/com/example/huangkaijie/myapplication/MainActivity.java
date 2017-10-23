@@ -66,7 +66,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RecyleActivity.class);
+                Intent intent = new Intent(MainActivity.this, RecylerActivity.class);
                 startActivity(intent);
             }
         });

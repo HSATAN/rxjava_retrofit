@@ -70,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.loginlayout);
         ButterKnife.bind(this);
         initUser();
+        Login();
         password.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -169,7 +170,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-
+                        Log.d("network error",e.toString());
                     }
 
                     @Override
