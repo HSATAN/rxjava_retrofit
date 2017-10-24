@@ -6,12 +6,19 @@ package AuthUser;
  */
 
 public class User {
-    public static String name="huangkaijie ";
-    public static int id=123456;
-    public static String image="http:test.com";
-    public static int number=999;
-
+    public static String name;
+    public static int phone_number;
+    public static String image;
+    public static String intro;
+    public static int age;
+    public static String head_url;
+    public static int code=0;
+    public static String password;
     public Boolean Auth(){
         return false;
+    }
+    public String Encrypt(String pass)
+    {
+        return pass;
     }
 }

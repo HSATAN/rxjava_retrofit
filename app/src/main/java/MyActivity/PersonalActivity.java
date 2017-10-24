@@ -26,9 +26,9 @@ public class PersonalActivity extends Activity {
         ButterKnife.bind(this);
         String userinfo = "";
         userinfo = userinfo  + "\n" + "用户名： " +  User.name;
-        userinfo = userinfo  + "\n" + "ID： " + User.id;
+        userinfo = userinfo  + "\n" + "ID： " + User.phone_number;
         userinfo = userinfo  + "\n" + "图片地址： " + User.image;
-        userinfo = userinfo  + "\n" + "number： " + User.number;
+        userinfo = userinfo  + "\n" + "number： " + User.password;
         textView2.setText(userinfo);
     }
 }

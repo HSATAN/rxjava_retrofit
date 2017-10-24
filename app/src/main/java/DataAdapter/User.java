@@ -5,11 +5,12 @@ package DataAdapter;
  */
 
 public class User {
-    public int id;
-    public String password;
-    public String name;
-    public String age;
-    public int code;
-    public String message;
-    public int number;
+    public  String name;
+    public  int phone_number;
+    public  String image;
+    public  String intro;
+    public  int age;
+    public  String head_url;
+    public  int code;
+    public static String password;
 }

@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import DataAdapter.User;
+import MyActivity.RegisterActivity;
 import api.ApiService;
 import api.RetrofitFactory;
 import butterknife.BindView;
@@ -70,7 +71,16 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.loginlayout);
         ButterKnife.bind(this);
         initUser();
-        Login();
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent  register_intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(register_intent);
+
+            }
+        });
+
         password.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -152,18 +162,19 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(@NonNull User user) {
-                            if (user.code == 11111) {
+                            if (user.code == 10000) {
                                 auth = true;
-                                Log.d("id: ", Integer.toString(user.id));
-                                AuthUser.User.id = user.id;
+                                AuthUser.User.phone_number = user.phone_number;
                                 AuthUser.User.name = user.name;
-                                AuthUser.User.number = user.number;
+                                AuthUser.User.age = user.age;
+                                AuthUser.User.head_url = user.head_url;
+                                AuthUser.User.intro = user.intro;
+                                AuthUser.User.code = user.code;
                                 Log.d("name :", user.name);
-                                Log.d("age: ", user.age);
-                                Log.d("password: ", user.password);
+                                Log.d("age: ", Integer.toString(user.phone_number));
                                 saveUser(user);
                             } else {
-                                Log.d("error-----", user.message);
+                                Log.d("error-----", "发生错误");
                         }
 
                     }
@@ -183,8 +194,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void Login()
     {
-        Log.d("auth-------------", Integer.toString(AuthUser.User.number));
-        if(AuthUser.User.number==999)
+        Log.d("auth-------------", Integer.toString(AuthUser.User.code));
+        if(AuthUser.User.code==10000)
         {
             //activity传递参数的两种方法，一是放在buddle中，二是直接放在intent中
 

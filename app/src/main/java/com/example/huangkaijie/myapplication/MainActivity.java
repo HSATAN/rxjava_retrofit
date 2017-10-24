@@ -25,6 +25,8 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
+import static AuthUser.User.phone_number;
+
 public class MainActivity extends Activity {
 
     @BindView(R.id.textView)
@@ -81,7 +83,7 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 String userinfo= "";
                 userinfo = userinfo+"\n 用户名："+ AuthUser.User.name;
-                userinfo = userinfo+"\n id:"+ AuthUser.User.id;
+                userinfo = userinfo+"\n id:"+ phone_number;
                 textView.setText(userinfo);
             }
         });
@@ -123,9 +125,8 @@ public class MainActivity extends Activity {
 
                     @Override
                     public void onNext(@NonNull User user) {
-                        Log.d("id: ", Integer.toString(user.id));
+                        Log.d("id: ", Integer.toString(user.phone_number));
                         Log.d("name :", user.name);
-                        Log.d("age: ", user.age);
                         Log.d("password: ", user.password);
                     }
 
@@ -156,9 +157,8 @@ public class MainActivity extends Activity {
 
                     @Override
                     public void onNext(@NonNull User user) {
-                        Log.d("id: ", Integer.toString(user.id));
                         Log.d("name :", user.name);
-                        Log.d("age: ", user.age);
+                        Log.d("age: ", Integer.toString(user.phone_number));
                         Log.d("password: ", user.password);
                     }
 

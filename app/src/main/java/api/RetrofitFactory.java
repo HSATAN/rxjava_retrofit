@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitFactory {
    // public static String  baseUrl = "https://api.douban.com/v2/movie/";
-    public static String  baseUrl ="http://192.168.0.106:9000/ajax/";
+    public static String  baseUrl ="http://47.93.24.159/ajax/";
     public static Retrofit retrofit;
     static HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
     static OkHttpClient okHttpClient;

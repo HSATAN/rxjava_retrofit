@@ -19,6 +19,7 @@
         <activity android:name=".RecylerActivity"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name="MyActivity.PersonalActivity"></activity>
+        <activity android:name="MyActivity.RegisterActivity"></activity>
     </application>
     <uses-permission  android:name="android.permission.INTERNET"/>
 </manifest>

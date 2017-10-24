@@ -32,6 +32,9 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("auth")
-    Observable<User> AuthUser(@Field("id") String id,@Field("password") String password);
+    Observable<User> AuthUser(@Field("phone_number") String id, @Field("password") String password);
 
+    @FormUrlEncoded
+    @POST("register")
+    Observable<Integer> Register(@Field("name") String name, @Field("phone_number") String phone_number, @Field("password") String password);
 }
