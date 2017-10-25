@@ -39,8 +39,8 @@ public class BarActivity extends FragmentActivity {
     @BindView(R.id.navigation)
     BottomNavigationView navigation;
     @BindView(R.id.mViewPager)
-    ViewPager mViewPager;
-    List<Fragment> fragmentList;
+     ViewPager mViewPager;
+    private List<Fragment> fragmentList;
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);

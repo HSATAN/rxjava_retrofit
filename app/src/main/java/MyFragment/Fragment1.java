@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
+import static com.example.huangkaijie.myapplication.R.id.mViewPager;
 
 /**
  * Created by edison on 2017/10/25.
@@ -29,11 +31,10 @@ public class Fragment1 extends Fragment {
 
     @BindView(R.id.tabs)
     PagerSlidingTabStrip tabs;
-    @BindView(R.id.mViewPager)
-    ViewPager mViewPager;
+    @BindView(mViewPager)
+    ViewPager subViewPager;
     Unbinder unbinder;
     String titiles[] = {"first", "secong"};
-    private List<Fragment> fragmentList = new ArrayList<Fragment>();
 
     @Override
     public void onAttach(Context activity) {
@@ -52,11 +53,13 @@ public class Fragment1 extends Fragment {
         System.out.println("1111111111111111111____onCreateView");
         View view = inflater.inflate(R.layout.viewpager_layout, container, false);
         unbinder = ButterKnife.bind(this, view);
+        List<Fragment> fragmentList = new ArrayList<Fragment>();
         fragmentList.add(new ViewFragment1());
         fragmentList.add(new ViewFragment2());
+        Log.d("fragmentlist-------",Integer.toString(fragmentList.size()));
         MyFragmentViewPageAdapter myFragmentViewPageAdapter = new MyFragmentViewPageAdapter(getFragmentManager(), fragmentList, titiles);
-        mViewPager.setAdapter(myFragmentViewPageAdapter);
-        tabs.setViewPager(mViewPager);
+        subViewPager.setAdapter(myFragmentViewPageAdapter);
+        tabs.setViewPager(subViewPager);
         return view;
     }
 

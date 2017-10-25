@@ -29,6 +29,8 @@ public class MyFragmentViewPageAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int pos)
     {
-        return titles[pos];
+
+            return titles[pos];
+
     }
 }
