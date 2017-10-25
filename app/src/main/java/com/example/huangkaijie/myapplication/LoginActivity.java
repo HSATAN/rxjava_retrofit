@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import DataAdapter.User;
+import Func.Commom;
 import MyActivity.RegisterActivity;
 import api.ApiService;
 import api.RetrofitFactory;
@@ -33,7 +34,9 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
+import static AuthUser.User.name;
 import static android.R.id.button3;
+import static api.RetrofitFactory.retrofit;
 import static com.example.huangkaijie.myapplication.R.id.bt_pwd_clear;
 import static com.example.huangkaijie.myapplication.R.id.bt_username_clear;
 import static com.example.huangkaijie.myapplication.R.id.progress_circular;
@@ -114,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 post();
 
             }
@@ -148,11 +152,16 @@ public class LoginActivity extends AppCompatActivity {
         //savedInstanceState.putString("password",editText3.getText().toString());
     }
     public void post() {
-        String id = username.getText().toString();
+        String phone_number = username.getText().toString();
         String psword = password.getText().toString();
+        if(!Commom.CheckPhoneNumber(phone_number))
+        {
+            Log.d("参数错误", phone_number);
+            return;
+        }
         Retrofit retrofit = RetrofitFactory.getRetrofit();
         ApiService apiService = retrofit.create(ApiService.class);
-        apiService.AuthUser(id, psword)
+        apiService.AuthUser(phone_number, psword)
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.io())
                 .subscribe(new Observer<User>() {
@@ -165,13 +174,13 @@ public class LoginActivity extends AppCompatActivity {
                             if (user.code == 10000) {
                                 auth = true;
                                 AuthUser.User.phone_number = user.phone_number;
-                                AuthUser.User.name = user.name;
+                                name = user.name;
                                 AuthUser.User.age = user.age;
                                 AuthUser.User.head_url = user.head_url;
                                 AuthUser.User.intro = user.intro;
                                 AuthUser.User.code = user.code;
                                 Log.d("name :", user.name);
-                                Log.d("age: ", Integer.toString(user.phone_number));
+                                Log.d("age: ", user.phone_number);
                                 saveUser(user);
                             } else {
                                 Log.d("error-----", "发生错误");
@@ -212,12 +221,15 @@ public class LoginActivity extends AppCompatActivity {
         //读取缓存的用户信息，
         SharedPreferences sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
-        String name = sharedPreferences.getString("name","");
-
-        if(!name.equals(""))
+        String phone_number = sharedPreferences.getString("phone_number","");
+        String passw = sharedPreferences.getString("password","");
+        Log.d("password", passw);
+        Log.d("phone_number", phone_number);
+        if(!phone_number.equals(""))
         {
-            AuthUser.User.name = name;
-            username.setText(name);
+            Log.d("password", passw);
+            username.setText(phone_number);
+            password.setText(passw);
         }
     }
     public void saveUser(User user)
@@ -227,6 +239,7 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences.Editor editor=sharedPreferences.edit();
         editor.putString("name", user.name);
         editor.putString("password",user.password);
+        editor.putString("phone_number",user.phone_number);
         editor.commit();
     }
 }

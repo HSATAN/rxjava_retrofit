@@ -125,7 +125,7 @@ public class MainActivity extends Activity {
 
                     @Override
                     public void onNext(@NonNull User user) {
-                        Log.d("id: ", Integer.toString(user.phone_number));
+                        Log.d("id: ", user.phone_number);
                         Log.d("name :", user.name);
                         Log.d("password: ", user.password);
                     }
@@ -146,7 +146,7 @@ public class MainActivity extends Activity {
 
         Retrofit retrofit = RetrofitFactory.getRetrofit();
         ApiService api = retrofit.create(ApiService.class);
-        api.getUserInfo("http://192.168.0.106:9000/ajax/userinfo/", "1", "password")
+        api.getUserInfo("http://47.93.24.159/ajax/userinfo/", AuthUser.User.phone_number, "password")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<User>() {
@@ -158,8 +158,9 @@ public class MainActivity extends Activity {
                     @Override
                     public void onNext(@NonNull User user) {
                         Log.d("name :", user.name);
-                        Log.d("age: ", Integer.toString(user.phone_number));
-                        Log.d("password: ", user.password);
+                        String userinfo= "";
+                        userinfo = userinfo+"\n 用户名："+ user.name;
+                        textView.setText(userinfo);
                     }
 
                     @Override

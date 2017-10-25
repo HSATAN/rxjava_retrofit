@@ -22,7 +22,7 @@ public interface ApiService {
     Observable<Movie> getTopMovie(@Query("start") int start, @Query("count") int count);
 
     @GET//获取用户信息，get方法,@Url字段，动态加载Url
-    Observable<User> getUserInfo(@Url String url,@Query("id") String id, @Query("password") String password);
+    Observable<User> getUserInfo(@Url String url,@Query("phone_number") String id, @Query("password") String password);
 
 
     @FormUrlEncoded

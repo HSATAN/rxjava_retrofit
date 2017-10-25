@@ -6,7 +6,7 @@ package DataAdapter;
 
 public class User {
     public  String name;
-    public  int phone_number;
+    public  String phone_number;
     public  String image;
     public  String intro;
     public  int age;

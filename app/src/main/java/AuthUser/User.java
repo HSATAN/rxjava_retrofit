@@ -7,7 +7,7 @@ package AuthUser;
 
 public class User {
     public static String name;
-    public static int phone_number;
+    public static String phone_number;
     public static String image;
     public static String intro;
     public static int age;
