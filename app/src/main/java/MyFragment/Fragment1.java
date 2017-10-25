@@ -19,6 +19,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
+
 /**
  * Created by edison on 2017/10/25.
  */
@@ -36,32 +38,32 @@ public class Fragment1 extends Fragment {
     @Override
     public void onAttach(Context activity) {
         super.onAttach(activity);
-        System.out.println("BBBBBBBBBBB____onAttach");
+        System.out.println("1111111111111111111____onAttach");
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("BBBBBBBBBBB____onCreate");
+        System.out.println("1111111111111111111____onCreate");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        System.out.println("BBBBBBBBBBB____onCreateView");
+        System.out.println("1111111111111111111____onCreateView");
         View view = inflater.inflate(R.layout.viewpager_layout, container, false);
         unbinder = ButterKnife.bind(this, view);
-        fragmentList.add(new Fragment2());
-        fragmentList.add(new Fragment3());
+        fragmentList.add(new ViewFragment1());
+        fragmentList.add(new ViewFragment2());
         MyFragmentViewPageAdapter myFragmentViewPageAdapter = new MyFragmentViewPageAdapter(getFragmentManager(), fragmentList, titiles);
         mViewPager.setAdapter(myFragmentViewPageAdapter);
-        //tabs.setViewPager(mViewPager);
+        tabs.setViewPager(mViewPager);
         return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        System.out.println("BBBBBBBBBBB____onActivityCreated");
+        System.out.println("1111111111111____onActivityCreated");
 //        this.getView().findViewById(R.id.clickme).setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -78,13 +80,13 @@ public class Fragment1 extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        System.out.println("BBBBBBBBBBB____onStart");
+        System.out.println("1111111111111111111____onStart");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        System.out.println("BBBBBBBBBBB____onResume");
+        System.out.println("1111111111111111111____onResume");
     }
 
     @Override

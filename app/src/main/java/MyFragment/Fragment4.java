@@ -1,31 +1,19 @@
 package MyFragment;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 
 import com.example.huangkaijie.myapplication.R;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 /**
- * Created by edison on 2017/10/25.
+ * Created by edison on 2017/10/26.
  */
 
-public class Fragment3 extends Fragment {
+public class Fragment4 extends Fragment {
 
     @Override
     public void onAttach(Context activity) {
@@ -45,7 +33,7 @@ public class Fragment3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         System.out.println("3333333333333333333____onCreateView");
-        return inflater.inflate(R.layout.fragment_c_layout, container, false);
+        return inflater.inflate(R.layout.fragment_4_layout, container, false);
     }
 
     @Override

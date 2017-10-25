@@ -1,8 +1,9 @@
 package MyFragment;
 
-import android.app.Fragment;
+
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,7 @@ public class ViewFragment2 extends Fragment {
     public void onAttach(Context activity) {
 
         super.onAttach(activity);
-        System.out.println("AAAAAAAAAA____onAttach");
+        System.out.println("55555555555555555555____onAttach");
     }
 
     @Override
@@ -32,7 +33,7 @@ public class ViewFragment2 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        System.out.println("AAAAAAAAAA____onCreateView");
+        System.out.println("55555555555555555555____onCreateView");
         return inflater.inflate(R.layout.fragment_b_layout, container, false);
     }
 
@@ -49,42 +50,42 @@ public class ViewFragment2 extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        System.out.println("AAAAAAAAAA____onStart");
+        System.out.println("55555555555555555555____onStart");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        System.out.println("AAAAAAAAAA____onResume");
+        System.out.println("55555555555555555555___onResume");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        System.out.println("AAAAAAAAAA____onPause");
+        System.out.println("55555555555555555555____onPause");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        System.out.println("AAAAAAAAAA____onStop");
+        System.out.println("55555555555555555555____onStop");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        System.out.println("AAAAAAAAAA____onDestroyView");
+        System.out.println("55555555555555555555____onDestroyView");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        System.out.println("AAAAAAAAAA____onDestroy");
+        System.out.println("55555555555555555555____onDestroy");
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        System.out.println("AAAAAAAAAA____onDetach");
+        System.out.println("55555555555555555555____onDetach");
     }
 }
