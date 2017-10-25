@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import DataAdapter.User;
 import Func.Commom;
+import MyActivity.BarActivity;
 import MyActivity.RegisterActivity;
 import api.ApiService;
 import api.RetrofitFactory;
@@ -208,7 +209,7 @@ public class LoginActivity extends AppCompatActivity {
         {
             //activity传递参数的两种方法，一是放在buddle中，二是直接放在intent中
 
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(LoginActivity.this, BarActivity.class);
                 intent.putExtra("name", username.getText().toString());
                 intent.putExtra("password", password.getText().toString());
                 startActivity(intent);
