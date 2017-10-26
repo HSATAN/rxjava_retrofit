@@ -12,9 +12,9 @@
         app:pstsDividerColor="@color/colorAccent"
         android:layout_width="match_parent"
         app:pstsShouldExpand="true"
-        app:pstsIndicatorColor="@color/colorAccent"
-        app:pstsScrollOffset="30dp"
-
+        app:pstsIndicatorColor="@color/grey"
+        app:pstsUnderlineHeight="2dp"
+        app:pstsIndicatorHeight="2dp"
         android:layout_height="48dip" />
 
     <android.support.v4.view.ViewPager
