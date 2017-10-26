@@ -15,6 +15,7 @@ import com.example.huangkaijie.myapplication.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import DataAdapter.IndexAdapter;
 import DataAdapter.MyFragmentViewPageAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,7 +58,7 @@ public class Fragment1 extends Fragment {
         fragmentList.add(new ViewFragment1());
         fragmentList.add(new ViewFragment2());
         Log.d("fragmentlist-------",Integer.toString(fragmentList.size()));
-        MyFragmentViewPageAdapter myFragmentViewPageAdapter = new MyFragmentViewPageAdapter(getFragmentManager(), fragmentList, titiles);
+        IndexAdapter myFragmentViewPageAdapter = new IndexAdapter(getChildFragmentManager(), fragmentList, titiles);
         subViewPager.setAdapter(myFragmentViewPageAdapter);
         tabs.setViewPager(subViewPager);
         return view;
